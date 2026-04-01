@@ -1,101 +1,110 @@
-# SIM + SIH: Mortalidade e Internações (0 a 6 anos) no Brasil
-
-Projeto público em R para análise reprodutível da mortalidade (SIM) e internações hospitalares (SIH) em crianças de 0 a 6 anos no Brasil.
-
----
-
-## População de interesse
-
-Este projeto analisa exclusivamente crianças de **0 a 6 anos de idade**, segmentadas nos seguintes grupos etários:
-
-- Neonatal precoce (0–6 dias)  
-- Neonatal tardia (7–27 dias)  
-- Pós-neonatal (28 dias a <1 ano)  
-- 1 a 6 anos  
-
-Todos os dados, análises e visualizações são restritos a essa faixa etária.
+<div align="center">
+  <h1>📊 SIM + SIH: Mortalidade e Internações (0 a 6 anos) no Brasil</h1>
+  <p><strong>Projeto de análise reprodutível de dados de saúde pública (2015-2024)</strong></p>
+</div>
 
 ---
 
-## Objetivos
+## 📌 Resumo Executivo
 
-- Descrever a evolução temporal da mortalidade em crianças de 0 a 6 anos no Brasil.
-- Caracterizar padrões de internação hospitalar (SIH) na mesma faixa etária.
-- Avaliar desigualdades e heterogeneidade regional nas taxas de mortalidade.
-- Identificar causas prioritárias de morte com potencial de intervenção médica e de saúde pública.
-- Analisar o fluxo de ocorrência de óbitos (município de residência vs. município de ocorrência) para identificar polos de atração e gargalos de atendimento infantil.
+Este projeto apresenta um mapeamento detalhado e de alto rigor epidemiológico sobre a **mortalidade e internação de crianças na primeira infância (0 a 6 anos)** no Brasil. O objetivo é fornecer subsídios baseados em dados para a formulação de políticas públicas, identificação de gargalos no SUS e direcionamento de recursos para as áreas e causas mais críticas.
 
----
-
-## 📌 Nota Metodológica
-
-Buscando o maior rigor epidemiológico possível, o cálculo das Taxas de Mortalidade Infantil (TMI) para menores de 1 ano utiliza como denominador o número de **Nascidos Vivos (SINASC)** do mesmo período e localidade, substituindo estimativas populacionais intercensitárias do IBGE. As taxas são apresentadas por **1.000 nascidos vivos**.
+**Recorte Etário Analisado:**
+* Neonatal precoce (0–6 dias)
+* Neonatal tardia (7–27 dias)
+* Pós-neonatal (28 dias a <1 ano)
+* 1 a 6 anos
 
 ---
 
-## Recorte temporal
+## 🔬 Nota Metodológica de Excelência
 
-Período analisado: **2015 a 2024**
+Para garantir a máxima precisão das **Taxas de Mortalidade Infantil (TMI)**, este estudo substitui as estimativas populacionais intercensitárias convencionais pelo número real de **Nascidos Vivos (SINASC)** do mesmo período e localidade como denominador. As taxas são padronizadas por **1.000 nascidos vivos**, refletindo o padrão-ouro da epidemiologia em saúde pública.
 
----
-
-## Fontes de Dados
-
-- **SIM** (Sistema de Informações sobre Mortalidade)  
-- **SINASC** (Sistema de Informações sobre Nascidos Vivos) - *Utilizado como denominador*
-- **SIH** (Sistema de Informações Hospitalares)  
-- **DataSUS** (Extração via pacote `microdatasus` em R e arquivos TabNet)
+**Fontes de Dados Oficiais:**
+* **SIM** (Sistema de Informações sobre Mortalidade)
+* **SINASC** (Sistema de Informações sobre Nascidos Vivos)
+* **SIH** (Sistema de Informações Hospitalares)
+* **Extração:** DataSUS (via R/microdatasus e TabNet)
 
 ---
 
-## Principais Resultados (Visualizações)
+## 📈 Resultados e Painel de Indicadores
 
-### 1. Perfil Temporal e Causal
-**Evolução da Mortalidade por Faixa Etária (Absoluto)**
-![Figura 1](Fig01_Evolucao_Faixa_Etaria_Absoluto.png)
+> *Todas as análises e rotinas de extração foram desenvolvidas em ambiente R e os scripts completos estão disponíveis neste repositório.*
 
-**Evolução das Causas de Mortalidade (Taxa por 1.000 N.V.)**
-![Figura 2](Fig02_Evolucao_Causas_Taxa.png)
+### 1. Perfil Temporal e Causal da Mortalidade
 
-**Causas Prioritárias de Intervenção por Faixa Etária**
-![Figura 3](Fig03_Causas_Prioritarias_por_Faixa.png)
+**Evolução da Mortalidade por Faixa Etária (Óbitos Absolutos)**
+<div align="center">
+  <img src="Fig01_Evolucao_Faixa_Etaria_Absoluto.png" width="850">
+</div>
 
-### 2. Análise Espacial e Desigualdades
+**Evolução das Causas de Mortalidade (Taxa por 1.000 Nascidos Vivos)**
+<div align="center">
+  <img src="Fig02_Evolucao_Causas_Taxa.png" width="850">
+</div>
+
+**Causas Prioritárias de Intervenção Estratégica**
+<div align="center">
+  <img src="Fig03_Causas_Prioritarias_por_Faixa.png" width="850">
+</div>
+
+---
+
+### 2. Análise Espacial e Desigualdades Regionais
+
 **Heterogeneidade Regional (Taxa Média)**
-![Figura 4](Fig04_Heterogeneidade_Macro_Taxa.png)
+<div align="center">
+  <img src="Fig04_Heterogeneidade_Macro_Taxa.png" width="850">
+</div>
 
-**Mapa da Distribuição Espacial - Taxa por Estado**
-![Figura 5](Fig05_Mapa_Taxa_Estado.png)
+**Distribuição Espacial da Taxa de Mortalidade por Estado**
+<div align="center">
+  <img src="Fig05_Mapa_Taxa_Estado.png" width="700">
+</div>
 
-**Mapa da Distribuição Espacial - Taxa por Macrorregião**
-![Figura 6](Fig06_Mapa_Taxa_Macrorregiao.png)
+**Distribuição Espacial da Taxa de Mortalidade por Macrorregião**
+<div align="center">
+  <img src="Fig06_Mapa_Taxa_Macrorregiao.png" width="700">
+</div>
 
-### 3. Análise de Fluxo e Rede de Atendimento
+---
+
+### 3. Análise de Fluxo e Rede de Atendimento (Gargalos do SUS)
+
+A identificação do fluxo de pacientes cruza o **Município de Residência** com o **Município de Ocorrência** do óbito, revelando a dependência interestadual e a sobrecarga de polos regionais de saúde.
+
 **Proporção de Óbitos Ocorridos Fora do Município de Residência**
-![Figura 7](Fig07_Fluxo_Obitos_Fora_Municipio.png)
+<div align="center">
+  <img src="Fig07_Fluxo_Obitos_Fora_Municipio.png" width="850">
+</div>
 
-**Top 30 Municípios Polo de Saúde Infantil (Atendimento a Não-Residentes)**
-![Figura 8](Fig08_Polos_Saude_Infantil_Top30.png)
+**Top 30 Municípios Polo de Saúde Infantil (Sobrecarga de Não-Residentes)**
+<div align="center">
+  <img src="Fig08_Polos_Saude_Infantil_Top30.png" width="850">
+</div>
 
-**Heatmap de Fluxo Inter-Estadual de Mortalidade**
-![Figura 9](Fig09_Heatmap_Fluxo_InterUF.png)
-
----
-
-## Estrutura do projeto
-
-- `Scripts/`: Códigos em R para download, limpeza, merge e geração dos gráficos.  
-- `Dados/`: Arquivos brutos (SIM, SINASC) ignorados no versionamento (`.gitignore`) por questões de tamanho e segurança.
-- Os gráficos `.png` gerados e a tabela executiva (`Tabelas_Executivas_Mortalidade_v2.xlsx`) estão disponíveis na raiz deste repositório para rápida visualização.
-- `Docs/`: Documentação complementar e dicionários de variáveis.  
+**Mapa de Calor: Fluxo Inter-Estadual de Mortalidade (Residência → Óbito)**
+<div align="center">
+  <img src="Fig09_Heatmap_Fluxo_InterUF.png" width="850">
+</div>
 
 ---
 
-## Reprodutibilidade
+## 📂 Estrutura do Repositório
 
-Para reproduzir as análises em sua máquina local, clone este repositório, adicione os arquivos brutos na pasta `Dados/` conforme especificado nos scripts, e execute:
+* `Scripts/`: Códigos-fonte em R para extração, limpeza, cruzamento (linkage) e geração de dataviz.
+* `Dados/`: Diretório configurado no `.gitignore` para proteção de microdados brutos e respeito à volumetria do repositório.
+* **Tabelas Executivas:** O arquivo `Tabelas_Executivas_Mortalidade_v2.xlsx` contendo os dados sumarizados está disponível na raiz do repositório para download imediato.
+* `Docs/`: Dicionários de variáveis e metadados.
+
+## 💻 Reprodutibilidade
+
+Para auditores, pesquisadores e gestores que desejem reproduzir o painel:
 
 ```r
-# Exemplo de fluxo de execução
+# Clone o repositório e adicione as bases brutas na pasta Dados/
+# Execute os scripts de rotina:
 source("Scripts/01_download_preparo_sim_0a6.R")
 source("Scripts/02_analises_sim_0a6.R")
