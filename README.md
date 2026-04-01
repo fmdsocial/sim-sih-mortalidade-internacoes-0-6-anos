@@ -37,17 +37,17 @@ Para garantir a máxima precisão das **Taxas de Mortalidade Infantil (TMI)**, e
 
 **Evolução da Mortalidade por Faixa Etária (Óbitos Absolutos)**
 <div align="center">
-  <img src="Fig01_Evolucao_Faixa_Etaria_Absoluto.png" width="850">
+  <img src="outputs/figuras/Fig01_Evolucao_Faixa_Etaria_Absoluto.png" width="850">
 </div>
 
 **Evolução das Causas de Mortalidade (Taxa por 1.000 Nascidos Vivos)**
 <div align="center">
-  <img src="Fig02_Evolucao_Causas_Taxa.png" width="850">
+  <img src="outputs/figuras/Fig02_Evolucao_Causas_Taxa.png" width="850">
 </div>
 
 **Causas Prioritárias de Intervenção Estratégica**
 <div align="center">
-  <img src="Fig03_Causas_Prioritarias_por_Faixa.png" width="850">
+  <img src="outputs/figuras/Fig03_Causas_Prioritarias_por_Faixa.png" width="850">
 </div>
 
 ---
@@ -56,17 +56,17 @@ Para garantir a máxima precisão das **Taxas de Mortalidade Infantil (TMI)**, e
 
 **Heterogeneidade Regional (Taxa Média)**
 <div align="center">
-  <img src="Fig04_Heterogeneidade_Macro_Taxa.png" width="850">
+  <img src="outputs/figuras/Fig04_Heterogeneidade_Macro_Taxa.png" width="850">
 </div>
 
 **Distribuição Espacial da Taxa de Mortalidade por Estado**
 <div align="center">
-  <img src="Fig05_Mapa_Taxa_Estado.png" width="700">
+  <img src="outputs/figuras/Fig05_Mapa_Taxa_Estado.png" width="700">
 </div>
 
 **Distribuição Espacial da Taxa de Mortalidade por Macrorregião**
 <div align="center">
-  <img src="Fig06_Mapa_Taxa_Macrorregiao.png" width="700">
+  <img src="outputs/figuras/Fig06_Mapa_Taxa_Macrorregiao.png" width="700">
 </div>
 
 ---
@@ -77,34 +77,34 @@ A identificação do fluxo de pacientes cruza o **Município de Residência** co
 
 **Proporção de Óbitos Ocorridos Fora do Município de Residência**
 <div align="center">
-  <img src="Fig07_Fluxo_Obitos_Fora_Municipio.png" width="850">
+  <img src="outputs/figuras/Fig07_Fluxo_Obitos_Fora_Municipio.png" width="850">
 </div>
 
 **Top 30 Municípios Polo de Saúde Infantil (Sobrecarga de Não-Residentes)**
 <div align="center">
-  <img src="Fig08_Polos_Saude_Infantil_Top30.png" width="850">
+  <img src="outputs/figuras/Fig08_Polos_Saude_Infantil_Top30.png" width="850">
 </div>
 
 **Mapa de Calor: Fluxo Inter-Estadual de Mortalidade (Residência → Óbito)**
 <div align="center">
-  <img src="Fig09_Heatmap_Fluxo_InterUF.png" width="850">
+  <img src="outputs/figuras/Fig09_Heatmap_Fluxo_InterUF.png" width="850">
 </div>
 
 ---
 
 ## 📂 Estrutura do Repositório
 
-* `Scripts/`: Códigos-fonte em R para extração, limpeza, cruzamento (linkage) e geração de dataviz.
-* `Dados/`: Diretório configurado no `.gitignore` para proteção de microdados brutos e respeito à volumetria do repositório.
-* **Tabelas Executivas:** O arquivo `Tabelas_Executivas_Mortalidade_v2.xlsx` contendo os dados sumarizados está disponível na raiz do repositório para download imediato.
-* `Docs/`: Dicionários de variáveis e metadados.
+* `scripts/`: Códigos-fonte em R para extração, limpeza, cruzamento (linkage) e geração de dataviz.
+* `dados/`: Diretório configurado no `.gitignore` para proteção de microdados brutos e respeito à volumetria do repositório.
+* **Tabelas Executivas:** O arquivo [Tabelas_Executivas_Mortalidade_v2.xlsx](outputs/tabelas/Tabelas_Executivas_Mortalidade_v2.xlsx) contendo os dados sumarizados está disponível na pasta `outputs/tabelas/` para download e consulta rápida.
+* `docs/`: Dicionários de variáveis e metadados.
 
 ## 💻 Reprodutibilidade
 
 Para auditores, pesquisadores e gestores que desejem reproduzir o painel:
 
 ```r
-# Clone o repositório e adicione as bases brutas na pasta Dados/
+# Clone o repositório e adicione as bases brutas na pasta dados/
 # Execute os scripts de rotina:
-source("Scripts/01_download_preparo_sim_0a6.R")
-source("Scripts/02_analises_sim_0a6.R")
+source("scripts/01_download_preparo_sim_0a6.R")
+source("scripts/02_analises_sim_0a6.R")
