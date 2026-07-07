@@ -1,0 +1,137 @@
+---
+title: "Revisão de Literatura"
+subtitle: "Mortalidade Infantil no Brasil"
+lang: pt-BR
+bibliography: revisao_literatura.bib
+format:
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+  html:
+    toc: true
+    number-sections: true
+    embed-resources: true
+---
+
+\newpage
+
+## Evolução Histórica e Temporal da Mortalidade Infantil no Brasil
+
+A taxa de mortalidade infantil é o indicador que mede quantas crianças, a cada mil nascidas vivas, morrem antes de completar um ano de idade, em um determinado local e período de tempo. A queda dessa taxa no Brasil ao longo das últimas décadas é um processo bem documentado na saúde pública nacional, mas a literatura converge para um ponto central: o ritmo dessa queda foi desacelerando ao longo do tempo e, nos períodos mais recentes, chegou a reverter, isto é, a taxa voltou a subir.
+
+- **Longo prazo (1960 a 2019):** a taxa de mortalidade infantil brasileira caiu de aproximadamente 117 óbitos para cada mil crianças nascidas vivas em 1960 para 47,1 em 1990, 26,1 em 2000 e 13,3 em 2019. O ritmo de queda foi de cerca de 5,5% ao ano nas décadas de 1980 e 1990, reduzindo-se para cerca de 4,4% ao ano a partir dos anos 2000 [@barreto2007; @ministeriosaude2021].
+- **Estagnação entre 2016 e 2019:** a taxa nacional de mortalidade infantil estabilizou-se em torno de 13,3 óbitos para cada mil crianças nascidas vivas. Em 2016 houve aumento da taxa em quase todas as regiões do país, com exceção da região Sul -- um efeito atribuído à epidemia do vírus Zika, que reduziu o número de nascimentos e ao mesmo tempo aumentou os óbitos por malformações graves do sistema nervoso, somada à crise econômica que o país atravessava naquele período [@ministeriosaude2021].
+- **Reversão de tendência entre 2018 e 2022:** o estudo mais recente e abrangente desta revisão, publicado por Lopes e colaboradores em 2025, mostra que, no período de cinco anos entre 2018 e 2022, tanto a taxa de mortalidade de crianças menores de cinco anos quanto a taxa de mortalidade infantil -- menores de um ano -- voltaram a subir no Brasil como um todo, enquanto apenas a mortalidade no período neonatal, os primeiros 27 dias de vida, permaneceu estável. Nenhum estado brasileiro atingiu, em 2022, as metas mais exigentes definidas pelo Instituto de Pesquisa Econômica Aplicada (IPEA), e o estado de Roraima é apontado como o de maior risco de não cumprir nem mesmo a meta menos rigorosa estabelecida pelos Objetivos de Desenvolvimento Sustentável (ODS) das Nações Unidas para o ano de 2030 [@lopes2025].
+- Essa reversão de tendência é corroborada pelo trabalho de Boing e Boing (2025): a taxa nacional de mortalidade infantil ficou praticamente estagnada entre 2010 -- 13,0 óbitos por mil nascidos vivos -- e 2022 -- 12,7 óbitos por mil nascidos vivos --, com uma leve piora em 2022, e a mortalidade de crianças entre 1 e 4 anos não apresentou progresso algum ao longo de 12 anos, mantendo-se estável em torno de 2,5 óbitos por mil. Os autores atribuem essa estagnação a um conjunto de políticas de austeridade fiscal implementadas no período: a Emenda Constitucional número 95, de 2016, que instituiu um teto para o crescimento dos gastos públicos federais por vinte anos, a revisão da Política Nacional de Atenção Básica em 2017, que reduziu o número de agentes comunitários de saúde, o novo modelo de financiamento da atenção primária conhecido como Programa Previne Brasil, além do impacto da pandemia de covid-19 [@boingboing2025].
+- Marinho e colaboradores (2020), em um estudo sobre o impacto de ações assistenciais e de mudanças socioeconômicas e sanitárias na mortalidade de crianças, documentam uma desaceleração progressiva da queda da mortalidade de crianças menores de cinco anos, com pontos de mudança de tendência identificados por volta de 2010 e de 2015 -- mudança atribuída à crise econômica de 2015 e às políticas de austeridade fiscal que se seguiram [@marinho2020].
+
+Em conjunto, esses estudos desenham uma curva histórica em três fases distintas: uma queda acelerada entre 1990 e 2010, impulsionada pela expansão da Estratégia Saúde da Família e do programa de transferência de renda Bolsa Família, seguida por uma fase de desaceleração entre 2010 e 2017, e finalmente uma fase de estagnação e reversão entre 2018 e 2022, causada pela combinação de austeridade fiscal e pela pandemia de covid-19.
+
+## Causas de Óbito por Faixa Etária
+
+### Transição do perfil de causas de óbito ao longo do tempo
+
+A literatura brasileira de saúde pública documenta, ao longo de mais de quatro décadas, uma mudança clássica no perfil das causas de óbito infantil — um fenômeno conhecido como transição epidemiológica, em que doenças mais facilmente evitáveis, como infecções e diarreias, vão perdendo peso relativo à medida que são controladas, e passam a predominar causas ligadas à própria gestação, ao parto e a condições congênitas:
+
+| Período aproximado | Causas de óbito predominantes |
+|---|---|
+| 1980 a 1983 | Inflamações do intestino, pneumonias e causas originadas no período que envolve a gestação e o parto -- causas perinatais |
+| 1994 a 2004 | As causas perinatais já estavam em ascensão, chegando a representar cerca de 60% dos óbitos infantis em 2004 |
+| 2005 a 2008 | Predomínio de causas perinatais, seguidas por malformações congênitas, doenças infecciosas e parasitárias, e por fim doenças respiratórias |
+| 2018 a 2022 | As causas originadas no período perinatal somadas às malformações congênitas, deformidades e anomalias cromossômicas passam a representar mais de 80% dos óbitos infantis em todas as regiões do país, e mais de 95% dos óbitos ocorridos nos primeiros seis dias de vida [@wohlenberg2025] |
+
+A queda das doenças infecciosas, parasitárias e respiratórias -- controlada por meio da terapia de reidratação oral, da vacinação infantil, do incentivo ao aleitamento materno e da expansão da Estratégia Saúde da Família -- faz com que as causas perinatais e as malformações congênitas passem a dominar cada vez mais o perfil de óbitos infantis. A predominância não ocorre necessariamente porque essas causas aumentam em termos absolutos, mas porque as demais causas de óbito vêm caindo em ritmo mais acelerado.
+
+### Padrão de causas por faixa etária dentro do primeiro ano de vida
+
+- **Período neonatal precoce, nascimento até o sexto dia de vida completo:** é o período de maior risco de óbito dentro do primeiro ano de vida, e também aquele com a maior proporção de mortes consideradas evitáveis. Um estudo regional realizado na região Centro do estado de Minas Gerais mostra que os óbitos nesse período são dominados pelos subgrupos de causas evitáveis relacionados à "atenção à gestação", isto é, ao acompanhamento pré-natal da mãe, e à "atenção ao recém-nascido" logo após o parto, conforme a classificação da Lista Brasileira de Causas de Mortes Evitáveis por Intervenções do Sistema Único de Saúde [@lisboa2015].
+- **Período neonatal tardio, do sétimo ao vigésimo sétimo dia de vida:** apresenta um padrão historicamente mais estável, mas alguns estados do Nordeste brasileiro, como Maranhão e Sergipe, mostraram uma reversão de tendência nesse período após 2010 a 2012 [@souza2021].
+- **Período pós-neonatal, do vigésimo oitavo dia até o primeiro ano incompleto de vida:** é o componente do primeiro ano de vida que apresentou a maior queda histórica de mortalidade -- no Nordeste do Brasil, por exemplo, essa queda foi de cerca de 6,1% ao ano, refletindo melhorias ambientais e sanitárias e o papel do Programa Bolsa Família no combate à desnutrição e à diarreia infantil [@souza2021]. É também o período em que aparece o perfil de causas mais variado: malformações congênitas, doenças infecciosas, doenças respiratórias e, de forma crescente, causas externas, que podem ser acidentes e outras causas violentas [@moura2022; @wohlenberg2025].
+- **Crianças de 1 a 4 anos de idade:** nessa faixa etária, as causas externas -- acidentes, afogamentos, quedas e outras causas violentas -- passam a assumir a liderança em termos de risco relativo. Um estudo mostra que o risco relativo de óbito por causas externas nessa faixa etária, em comparação com o período neonatal precoce, cresceu de 14,9 vezes em 2017 para 18,1 vezes em 2020 -- sendo o único grupo de causas que piorou durante a pandemia de covid-19 [@moura2022].
+
+### Malformações congênitas
+
+- Um estudo que cruzou dados do SINASC com dados do SIM mostra que a mortalidade infantil por anomalias congênitas no Brasil vem crescendo: entre 2001 e 2018, a taxa de variação percentual anual foi de 4,23% no país como um todo, com crescimento ainda mais acelerado nas regiões Norte (10,15% ao ano) e Nordeste (9,90% ao ano). Esse crescimento reflete tanto uma melhoria no registro e na notificação desses óbitos quanto o impacto da epidemia do vírus Zika, ocorrida entre 2015 e 2016, que causou um pico de malformações do sistema nervoso [@fernandes2023].
+- Um estudo sobre malformações congênitas do aparelho circulatório, isto é, malformações cardíacas, mostra que elas representam 39% de todos os óbitos por malformação congênita no Brasil, com um risco quase duas vezes maior nas regiões Sul e Centro-Oeste do que nas regiões Norte e Nordeste. Esse padrão, porém, reflete principalmente um subdiagnóstico -- e não uma incidência de fato menor -- nas regiões mais pobres: mais de 60% das malformações cardíacas registradas no Norte e no Nordeste são classificadas como ``não especificadas'' por falta de acesso a exames diagnósticos especializados, como a ecocardiografia fetal [@salim2020].
+- Um estudo realizado no município de Joinville, em Santa Catarina -- cidade com IDH elevado, de 0,809 -- mostra que, em municípios de alto desenvolvimento socioeconômico, os determinantes da mortalidade infantil residual passam a ser predominantemente biológicos: a malformação congênita, com razão de chances de 21,49, a prematuridade extrema, razão de chances de 12,08 e o peso muito baixo ao nascer, razão de chances de 8,20, são os fatores mais associados ao óbito, enquanto os fatores socioeconômicos perdem força estatística. Esse achado sustenta a hipótese de que, conforme as regiões do país avançam em desenvolvimento socioeconômico, o perfil de causas de óbito infantil se aproxima do observado em países desenvolvidos, no qual as malformações passam a superar as infecções como principal causa de morte [@kropiwiec2017].
+
+## Contexto Econômico e Determinantes Socioeconômicos
+
+A literatura é extremamente consistente ao apontar a renda, a desigualdade de renda e a escolaridade materna como os preditores mais robustos da taxa de mortalidade infantil:
+
+| Estudo | Determinante mais associado à mortalidade infantil | Efeito observado |
+|---|---|---|
+| Boing e Boing (2008) | Índice de Desenvolvimento Humano Municipal (IDHM), desigualdade de renda e Produto Interno Bruto por habitante | correlações negativa de 0,645 com o IDHM e positiva de 0,394 com a desigualdade de renda |
+| Sousa e colaboradores (2016) | Desigualdade de renda | fator com a maior elasticidade entre todos os determinantes testados no estudo |
+| Marinho e colaboradores (2020) | Escolaridade feminina e extrema pobreza | correlações positivas entre 0,649 e 0,684 com a proporção de pobreza extrema |
+| Alves e Coelho (2021) | Renda familiar e número de consultas de pré-natal | efeito mais pronunciado sobre a mortalidade infantil de meninos do que de meninas |
+
+
+- No estudo de Boing e Boing (2008), municípios brasileiros com melhor distribuição de renda e maior PIB por habitante apresentam um coeficiente de mortalidade infantil evitável de 7,3 óbitos por mil nascidos vivos, contra 18,2 óbitos por mil nos municípios em pior situação -- uma diferença de 150% entre os dois grupos [@boingboing2008].
+- Sousa e colaboradores (2016) isolam o efeito da desigualdade de renda, medida pelo Índice de Gini, como o determinante de maior peso relativo sobre a taxa de mortalidade infantil entre os estados brasileiros -- superando até mesmo o efeito da renda média por habitante. Ou seja, o quão desigual é a distribuição da riqueza dentro de um estado pesa mais sobre a mortalidade infantil do que o nível médio de riqueza desse estado [@sousa2016].
+- Caldeira e colaboradores (2001), em um estudo realizado em Belo Horizonte, mostram que a qualidade da assistência médica hospitalar -- e não apenas o acesso a ela -- é um determinante independente da mortalidade infantil: as crianças em quadro clínico mais grave recebiam sistematicamente menos procedimentos hospitalares do que as demais, um fenômeno que os autores chamam de ``lei do cuidado inverso'' [@caldeira2001].
+
+### Atenção primária à saúde e programas sociais
+
+Praticamente todos os estudos revisados citam a Estratégia Saúde da Família (ESF) -- o principal modelo de atenção primária à saúde do Sistema Único de Saúde, que organiza equipes multiprofissionais responsáveis por um território e uma população definidos -- como o principal mecanismo estrutural por trás da queda histórica da mortalidade infantil no Brasil:
+
+- Ceccon e colaboradores (2014) encontram uma correlação quase perfeita entre a cobertura da ESF e a queda da taxa de mortalidade infantil em nível nacional entre 1998 e 2008: cada ponto percentual a mais de cobertura dessa estratégia foi associado a uma redução de 0,94 óbito para cada mil nascidos vivos [@ceccon2014].
+- Dilélio e colaboradores (2024) aprofundam essa análise mostrando que não é apenas a cobertura da ESF que importa, mas principalmente a qualidade do processo de trabalho das equipes de saúde e a estrutura física das Unidades Básicas de Saúde [@dilelio2024].
+- Souza e colaboradores (2021) atribuem ao Programa Bolsa Família o principal mecanismo de redução da mortalidade no período pós-neonatal, ligada a nutrição e diarreia, enquanto a ESF e o acompanhamento pré-natal afetam mais fortemente o período neonatal precoce [@souza2021].
+- Boing e Boing (2025) mostram o inverso dessa lógica: o desmonte progressivo dessas políticas -- por meio da Emenda Constitucional número 95, da revisão da Política Nacional de Atenção Básica em 2017 e da criação do Programa Previne Brasil -- coincide, no tempo, com a estagnação da mortalidade infantil observada a partir de 2017 [@boingboing2025].
+
+## Desigualdades Regionais
+
+| Estudo | Evidência sobre desigualdade regional |
+|---|---|
+| Barreto e Carmo (2007) | A taxa de mortalidade infantil da região Nordeste era 2,25 vezes maior que a das regiões Sudeste e Sul em 2003 |
+| Ceccon e colaboradores (2014) | Entre 2006 e 2008, a taxa de mortalidade infantil das regiões Sul e Sudeste era inferior a 12,1 óbitos por mil nascidos vivos, contra mais de 16,9 óbitos por mil nas regiões Norte e Nordeste |
+| Ministério da Saúde (2021) | Taxas de mortalidade infantil entre 2017 e 2019, por região: Norte 16,9; Nordeste 15,3; Centro-Oeste 13,0; Sudeste 11,7; Sul 10,1 óbitos por mil nascidos vivos |
+| Dilélio e colaboradores (2024) | Em 2018, a taxa de mortalidade infantil era de 14,5 no Norte, 14,1 no Nordeste, 11,2 no Sudeste e 10,6 no Sul; os agrupamentos geográficos de municípios com mortalidade persistentemente alta concentram-se no Norte e no Nordeste |
+| Boing e Boing (2025) | 42,2% das 100 microrregiões brasileiras com maior taxa de mortalidade infantil estão localizadas na região Norte, contra apenas 3,2% na região Sul |
+| Lopes e colaboradores (2025) | O estado de Roraima apresentou a maior taxa de mortalidade infantil e de mortalidade de menores de cinco anos no período de 2018 a 2022, além do maior risco de não atingir as metas de desenvolvimento sustentável até 2030 |
+
+### Mecanismos por trás da desigualdade regional
+
+- Justino e Andrade (2020), em uma análise espacial por capítulo da Classificação Internacional de Doenças, mostram a existência de agrupamentos geográficos de alto risco nas regiões Norte e Nordeste para quatro das cinco principais categorias de causas evitáveis de óbito infantil: causas perinatais, doenças infecciosas, doenças respiratórias e sintomas mal definidos; apenas as malformações congênitas se concentram, no mapa, na região Centro-Oeste -- um padrão explicado pela melhor capacidade de diagnóstico dessa região, e não por uma incidência real maior [@justinoandrade2020].
+- Pasklan e colaboradores (2021) identificam a qualidade dos serviços de atenção primária à saúde e a acessibilidade a serviços de alta complexidade como determinantes importantes da redução da mortalidade infantil, com concentração de municípios de mortalidade persistentemente alta nas regiões Norte e Nordeste [@pasklan2021].
+- Lopes e colaboradores (2025) quantificam a desigualdade de infraestrutura hospitalar: apenas nove estados brasileiros atingem a recomendação da Sociedade Brasileira de Pediatria de, no mínimo, quatro leitos de Unidade de Terapia Intensiva Neonatal para cada mil nascidos vivos, sendo que sete desses nove estados estão localizados nas regiões Sul ou Sudeste; os dez estados com menor disponibilidade desse tipo de leito estão todos localizados nas regiões Norte ou Nordeste [@lopes2025].
+- Malta e Duarte (2007), no estudo que fundou o conceito de mortes evitáveis por intervenção do Sistema Único de Saúde no Brasil, acrescentam uma dimensão importante sobre a qualidade dos próprios dados: a cobertura do SIM em 2003 era de 83% em nível nacional, mas insuficiente nas regiões Norte e Nordeste — o que significa que a desigualdade regional real pode estar até subestimada nessas regiões, já que parte dos óbitos simplesmente não é registrada [@maltaduarte2007].
+
+### As desigualdades regionais estão diminuindo ou persistindo?
+
+O sinal encontrado na literatura é misto. Alguns estudos apontam para uma convergência parcial entre regiões — ou seja, uma redução da diferença entre as regiões mais e menos desenvolvidas ao longo do tempo — enquanto outros mostram que essa convergência não é linear nem garantida, com casos localizados de reversão de tendência em determinados estados, como as reversões da mortalidade neonatal tardia documentadas no Maranhão e em Sergipe [@souza2021].
+
+## Literatura Global
+
+Dois estudos internacionais fornecem o referencial de comparação global, com base no chamado estudo de Carga Global de Doença — uma grande iniciativa internacional de pesquisa que estima, de forma padronizada, a mortalidade e a incidência de doenças em praticamente todos os países do mundo:
+
+- Qin e colaboradores (2025) mostram que, entre 2000 e 2021, a mortalidade neonatal caiu em nível global a um ritmo médio estimado de 1,76% ao ano. No entanto, a incidência de distúrbios neonatais reverteu de uma tendência de queda para uma tendência de alta durante a pandemia de covid-19, passando de uma variação de −0,68% ao ano para uma variação de +0,17% ao ano entre 2019 e 2021, — um fenômeno paralelo à reversão de tendência documentada no Brasil por Lopes e colaboradores (2025). Os autores também mostram que a desigualdade entre países, quando agrupados por nível de desenvolvimento socioeconômico, permaneceu praticamente estável ao longo de duas décadas — ou seja, essa desigualdade global não diminuiu de forma estrutural [@qin2025].
+- Du e colaboradores (2025), estudando a encefalopatia neonatal causada por asfixia ou traumatismo durante o parto, documentam uma disparidade de 27 vezes na taxa de mortalidade entre os países de nível socioeconômico mais baixo e os de nível socioeconômico mais alto, 17,77 contra 0,66 óbitos por 100 mil nascidos vivos. Os autores também descrevem o que chamam de ``paradoxo da sobrevivência'': a incidência dessa condição está caindo, mas a proporção de crianças que sobrevivem com sequelas está subindo, crescimento estimado de 2,16% ao ano, porque mais recém-nascidos afetados conseguem sobreviver [@du2025].
+- Em conjunto, esses dois estudos situam o Brasil como um país de nível socioeconômico médio-alto segundo o índice usado no estudo de Carga Global de Doença, com tendências de queda da mortalidade infantil mais lentas do que as observadas em países de nível socioeconômico alto, mas ainda assim melhores do que as observadas em países de nível socioeconômico baixo, como os da África Subsaariana e do Sul da Ásia.
+
+## Impacto da Pandemia de Covid-19
+
+- Moura e colaboradores (2022) mostram que a taxa de mortalidade de crianças menores de cinco anos no Brasil caiu de 15,6 para 13,7 óbitos por mil nascidos vivos entre 2017 e 2020, mas essa queda é interpretada pelos autores como artificial -- resultado do isolamento social que reduziu a exposição das crianças a infecções respiratórias e diarreicas, e de uma queda de 8,1% no número de nascimentos, e não de uma melhoria estrutural nos serviços de saúde. A própria covid-19 representou apenas 1,2% dos óbitos em crianças menores de cinco anos, mas com um risco relativo 14 vezes maior no período pós-neonatal do que no período neonatal precoce [@moura2022].
+- Wohlenberg e colaboradores (2025) mostram o mesmo fenômeno: a proporção de óbitos infantis causados por doenças respiratórias caiu em 2020 em todas as regiões do país, chegando a sair da lista das cinco causas mais frequentes em algumas delas, mas retornou com força em 2022, tornando-se novamente a segunda ou terceira causa mais frequente em nível nacional, sugerindo que o efeito protetor do distanciamento social foi apenas transitório [@wohlenberg2025].
+- Boing e Boing (2025) atribuem à pandemia de covid-19 parte da piora observada na taxa de mortalidade infantil em 2022, e, junto com Lopes e colaboradores (2025), enquadram a pandemia como um dos fatores por trás da reversão de tendência observada entre 2018 e 2022, ao lado da austeridade fiscal [@boingboing2025; @lopes2025].
+- Em paralelo, o estudo internacional de Qin e colaboradores (2025) mostra que esse padrão de reversão de tendência durante a pandemia não foi exclusivo do Brasil, mas um fenômeno observado em nível global [@qin2025].
+
+## Pontos Principais
+
+1. **A evitabilidade dos óbitos como fio condutor da literatura:** desde a fundação conceitual do tema, no trabalho de Malta e Duarte (2007), até as aplicações empíricas mais recentes, entre 63% e 82% dos óbitos infantis no Brasil são classificados como evitáveis por meio de ações do Sistema Único de Saúde, mesmo em municípios com boa infraestrutura de saúde [@maltaduarte2007].
+2. **O acompanhamento da gestação continua sendo o desafio remanescente:** um estudo regional mostra que, mesmo com a queda geral da mortalidade infantil, o subgrupo de causas evitáveis relacionado à atenção à gestação foi o que menos avançou ao longo do tempo, passando a ser a maior categoria de causa evitável de óbito [@lisboa2015].
+3. **As malformações congênitas como tendência emergente:** múltiplos estudos convergem para o achado de que as malformações congênitas são a causa de mortalidade infantil com a trajetória de crescimento mais consistente ao longo do tempo [@fernandes2023; @justinoandrade2020; @kropiwiec2017; @salim2020].
+4. **O subdiagnóstico pode mascarar parte da desigualdade regional:** a evidência de que mais de 60% das malformações cardíacas registradas nas regiões Norte e Nordeste são classificadas como "não especificadas" é um alerta metodológico importante, a menor mortalidade aparente por causas específicas nessas regiões pode refletir uma menor capacidade de diagnóstico, e não uma incidência menor da doença [@salim2020].
+5. **O período entre 2018 e 2022 é o período crítico de reversão de tendência**, que coincide exatamente com o início do período de 2015 a 2024 analisado por este projeto. Os estudos de Lopes e colaboradores (2025) e de Boing e Boing (2025) são as referências mais diretamente comparáveis para validar e contextualizar a desaceleração observada após a pandemia [@lopes2025; @boingboing2025].
+6. **Fluxos assistenciais e disponibilidade de leitos de terapia intensiva neonatal:** os estudos de Lopes e colaboradores (2025) e de Wohlenberg e colaboradores (2025) reforçam que a desigualdade na disponibilidade de leitos de Unidade de Terapia Intensiva Neonatal e no acesso a serviços de alta complexidade está estruturalmente concentrada nas regiões Norte e Nordeste, um achado que dialoga diretamente com a análise dos polos de referência terapêutica, como Recife e São Paulo [@lopes2025; @wohlenberg2025].
+
+## Próximos passos
+1. **Internações infantis na literatura:** entender a literatura nacional sobre internações e diferenças regionais, além das causas por faixa etária.
+2. **Procedimentos necessários:** conferir os procedimentos realizados nas internações, comparar a razão de óbitos regional por causas de internação e associar aos procedimentos menos realizados nas regiões de maior incidência de óbitos, tentativa de identificar os procedimentos que faltam para evitar óbitos nas diferentes internações.
+3. **Associar CID com procedimento necessário:** identificar as CIDs mais comuns nas causas de internação e mortalidade e associar, junto a literatura de pediatria e aos médicos, os procedimentos para evitar e/ou tratar tais causas.
+
+\newpage
+
+## Referências
