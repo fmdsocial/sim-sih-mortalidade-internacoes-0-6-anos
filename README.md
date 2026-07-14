@@ -1,6 +1,14 @@
 <div align="center">
   <h1>📊 SIM + SIH: Mortalidade e Internações (0 a 6 anos) no Brasil</h1>
   <p><strong>Projeto de análise reprodutível de dados de saúde pública (2015–2024)</strong></p>
+
+  <p>
+    <img src="https://img.shields.io/badge/R-Shiny-004B87?logo=r&logoColor=white" alt="R Shiny">
+    <img src="https://img.shields.io/badge/Dados-DATASUS%20(SIM%20·%20SIH%20·%20SINASC)-00A3A1" alt="DATASUS">
+    <img src="https://img.shields.io/badge/Coorte-0–6%20anos-F4A261" alt="Coorte">
+    <img src="https://img.shields.io/badge/Per%C3%ADodo-2015–2024-6c757d" alt="Período">
+    <img src="https://img.shields.io/badge/Licen%C3%A7a-MIT-informational" alt="Licença MIT">
+  </p>
 </div>
 
 ---
@@ -25,6 +33,32 @@ O projeto integra dois grandes módulos analíticos:
 
 ---
 
+## 🖥️ Dashboard Interativo (Shiny)
+
+O projeto inclui um **Observatório de Saúde Infantil** interativo (`app.R`), construído em R/Shiny, que organiza toda a análise na mesma lógica de navegação deste README:
+
+| Aba | Conteúdo |
+|---|---|
+| **Panorama** | Indicadores consolidados, mapa coroplético por UF, série histórica óbitos × internações e ranking de macrorregiões. |
+| **Por Faixa Etária** | Três dashboards em um: ① Neonatal (0–27 d), ② Pós-neonatal (28 d a <1 ano) e ③ 1 a 6 anos — com KPIs, séries e priorização de causas de cada faixa, além do detalhamento das causas de difícil prevenção em linguagem acessível (faixas 2 e 3). |
+| **Mortalidade** | Perfil temporal e causal, mapas e desigualdades, fluxos e polos de ocorrência do óbito. |
+| **Internações** | Perfil temporal e causal, mapas e desigualdades, fluxos e polos de atendimento hospitalar. |
+| **Metodologia** | Nota metodológica, fontes e lacunas de dados. |
+| **Dados** | Tabelas executivas para auditoria e exportação (CSV/Excel). |
+
+**Para executar localmente:**
+
+```r
+# na raiz do repositório
+install.packages(c("shiny","bslib","bsicons","readxl","dplyr","tidyr",
+                   "plotly","DT","sf","ggplot2","scales","htmltools"))
+shiny::runApp("app.R")
+```
+
+> O app carrega as tabelas executivas (`.xlsx`) e a malha geográfica (`uf_sf_simplified.rds`) do diretório do próprio app — execução totalmente offline.
+
+---
+
 ## 🔬 Nota Metodológica
 
 Para garantir maior precisão epidemiológica, este estudo utiliza o número de **nascidos vivos do SINASC** como denominador para o cálculo das taxas de mortalidade e de internação.
@@ -40,7 +74,7 @@ As taxas são expressas por **1.000 nascidos vivos**, permitindo comparações p
 
 Para a leitura de **polos de referência**, os diagnósticos são segmentados em grupos de alta complexidade (oncologia, cardiopatias congênitas, malformações, doenças do sistema nervoso e metabólicas/genéticas). As **afecções perinatais** são analisadas em separado, pois parte do evento perinatal recebido nos polos reflete o **local de parto** (gestação de risco referenciada à maternidade da capital) e não o deslocamento da criança em busca de tratamento. Define-se assim o conceito de **referência terapêutica** (alta complexidade *sem* perinatal), que é o fluxo "limpo" para identificar centros de referência e vazios assistenciais.
 
-> ℹ️ **Nota técnica sobre mapas.** As malhas geográficas (UF e centroides municipais) são obtidas de fontes abertas oficiais (GeoJSON com códigos IBGE e CSV de coordenadas municipais), baixadas uma única vez e cacheadas localmente. Essa abordagem substitui o pacote `geobr` para garantir reprodutibilidade e execução offline após o primeiro download.
+> ℹ️ **Nota técnica sobre mapas.** As malhas geográficas (UF e centroides municipais) são obtidas de fontes abertas oficiais (GeoJSON com códigos IBGE e CSV de coordenadas municipais), baixadas uma única vez e cacheadas localmente (`uf_sf_simplified.rds`). Essa abordagem substitui o pacote `geobr` para garantir reprodutibilidade e execução offline após o primeiro download.
 
 ---
 
@@ -50,18 +84,16 @@ Os scripts utilizados para extração, tratamento, análise e geração das visu
 
 ### Scripts do SIM — Mortalidade
 
-* [`Scripts/Script Insper_SIM.R`](Scripts/Script%20Insper_SIM.R)  
+* [`Scripts/Script Insper_SIM.R`](Scripts/Script%20Insper_SIM.R)
   Script de extração, organização e preparação das bases do SIM/SINASC.
-
-* [`Scripts/Script Insper_SIM_analises.R`](Scripts/Script%20Insper_SIM_analises.R)  
+* [`Scripts/Script Insper_SIM_analises.R`](Scripts/Script%20Insper_SIM_analises.R)
   Script de análises epidemiológicas, geração de tabelas executivas e visualizações do módulo de mortalidade.
 
 ### Scripts do SIH — Internações
 
-* [`Scripts/Script Insper_SIH`](Scripts/Script%20Insper_SIH)  
+* [`Scripts/Script Insper_SIH.R`](Scripts/Script%20Insper_SIH.R)
   Script de extração, organização e preparação das bases do SIH/SINASC.
-
-* [`Scripts/Script Insper_SIH_analises`](Scripts/Script%20Insper_SIH_analises)  
+* [`Scripts/Script Insper_SIH_analises.R`](Scripts/Script%20Insper_SIH_analises.R)
   Script de análises epidemiológicas, geração de tabelas executivas e visualizações do módulo de internações.
 
 ---
@@ -359,9 +391,16 @@ Os arquivos executivos com os resultados sumarizados das internações estão di
 ```text
 sim-sih-mortalidade-internacoes-0-6-anos/
 │
+├── app.R                          # Dashboard Shiny (Observatório de Saúde Infantil)
+│
+├── data/                          # Insumos carregados pelo app (execução offline)
+│   ├── Tabelas_Executivas_Mortalidade_v2.xlsx
+│   ├── Tabelas_Executivas_Internacoes_0_6_Anos.xlsx
+│   └── uf_sf_simplified.rds
+│
 ├── Scripts/
-│   ├── Script Insper_SIH
-│   ├── Script Insper_SIH_analises
+│   ├── Script Insper_SIH.R
+│   ├── Script Insper_SIH_analises.R
 │   ├── Script Insper_SIM.R
 │   └── Script Insper_SIM_analises.R
 │
@@ -421,6 +460,8 @@ sim-sih-mortalidade-internacoes-0-6-anos/
 └── README.md
 ```
 
+> **Nota:** o `app.R` procura as tabelas executivas e o `uf_sf_simplified.rds` no diretório de execução. Se você mantiver esses insumos em `data/`, ajuste os caminhos no início do `app.R` (ou copie os arquivos para a raiz antes de rodar).
+
 ---
 
 # 💻 Reprodutibilidade
@@ -433,8 +474,11 @@ source("Scripts/Script Insper_SIM.R")
 source("Scripts/Script Insper_SIM_analises.R")
 
 # Scripts do SIH — Internações
-source("Scripts/Script Insper_SIH")
-source("Scripts/Script Insper_SIH_analises")
+source("Scripts/Script Insper_SIH.R")
+source("Scripts/Script Insper_SIH_analises.R")
+
+# Dashboard interativo
+shiny::runApp("app.R")
 ```
 
 ---
@@ -449,4 +493,8 @@ As rotinas em R permitem reconstruir as bases analíticas a partir das fontes of
 
 # 📄 Licença
 
-Este projeto está disponibilizado para fins de pesquisa, ensino, auditoria técnica, transparência pública e apoio à formulação de políticas de saúde.
+Este projeto está disponibilizado sob a **Licença MIT**, para fins de pesquisa, ensino, auditoria técnica, transparência pública e apoio à formulação de políticas de saúde. Consulte o arquivo [`LICENSE`](LICENSE).
+
+<div align="center">
+  <sub>Repositório: <strong>fmdsocial/sim-sih-mortalidade-internacoes-0-6-anos</strong> · Felipe Delpino · INSPER</sub>
+</div>
