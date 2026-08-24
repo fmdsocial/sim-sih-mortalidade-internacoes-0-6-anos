@@ -1,12 +1,14 @@
 <div align="center">
   <h1>📊 SIM + SIH: Mortalidade e Internações (0 a 6 anos) no Brasil</h1>
   <p><strong>Projeto de análise reprodutível de dados de saúde pública (2015–2024)</strong></p>
+  <p>Observatório de Saúde Infantil · INSPER · Hospital Pequeno Príncipe</p>
 
   <p>
     <img src="https://img.shields.io/badge/R-Shiny-004B87?logo=r&logoColor=white" alt="R Shiny">
     <img src="https://img.shields.io/badge/Dados-DATASUS%20(SIM%20·%20SIH%20·%20SINASC)-00A3A1" alt="DATASUS">
     <img src="https://img.shields.io/badge/Coorte-0–6%20anos-F4A261" alt="Coorte">
     <img src="https://img.shields.io/badge/Per%C3%ADodo-2015–2024-6c757d" alt="Período">
+    <img src="https://img.shields.io/badge/Linkage-SIM%20↔%20SIH%20(v3.2)-8E44AD" alt="Linkage">
     <img src="https://img.shields.io/badge/Licen%C3%A7a-MIT-informational" alt="Licença MIT">
   </p>
 </div>
@@ -19,10 +21,11 @@ Este projeto apresenta um mapeamento detalhado da **mortalidade e das internaç�
 
 O objetivo é fornecer subsídios epidemiológicos e assistenciais para a formulação de políticas públicas, identificação de desigualdades regionais, análise de causas prioritárias e compreensão dos fluxos de atendimento infantil no Sistema Único de Saúde (SUS).
 
-O projeto integra dois grandes módulos analíticos:
+O projeto integra três módulos analíticos:
 
 * **SIM/SINASC** — mortalidade de crianças de 0 a 6 anos;
-* **SIH/SINASC** — internações hospitalares de crianças de 0 a 6 anos.
+* **SIH/SINASC** — internações hospitalares de crianças de 0 a 6 anos;
+* **Linkage SIM ↔ SIH** — pareamento entre o óbito hospitalar registrado no SIM e a AIH correspondente no SIH, permitindo reconstruir a trajetória hospitalar da criança e a transição do CID de entrada para o CID de óbito.
 
 **Recortes etários analisados:**
 
@@ -35,44 +38,112 @@ O projeto integra dois grandes módulos analíticos:
 
 ## 🖥️ Dashboard Interativo (Shiny)
 
-O projeto inclui um **Observatório de Saúde Infantil** interativo (`app.R`), construído em R/Shiny, que organiza toda a análise na mesma lógica de navegação deste README:
+O projeto inclui o **Observatório de Saúde Infantil** (`app.R`), construído em R/Shiny com `bslib`, que reúne os três módulos na mesma navegação.
 
 | Aba | Conteúdo |
 |---|---|
 | **Panorama** | Indicadores consolidados, mapa coroplético por UF, série histórica óbitos × internações e ranking de macrorregiões. |
-| **Por Faixa Etária** | Três dashboards em um: ① Neonatal (0–27 d), ② Pós-neonatal (28 d a <1 ano) e ③ 1 a 6 anos — com KPIs, séries e priorização de causas de cada faixa, além do detalhamento das causas de difícil prevenção em linguagem acessível (faixas 2 e 3). |
+| **Por Faixa Etária** | Três dashboards em um: ① Neonatal (0–27 d), ② Pós-neonatal (28 d a <1 ano) e ③ 1 a 6 anos — com KPIs, séries, priorização de causas e agrupamento de patologias semelhantes em cada faixa. |
+| **Sistemas & Patologias** | Classificação de todo código CID-10 pelo capítulo e pelo sistema do organismo acometido, com consolidação de CIDs que representam a mesma condição clínica (cardiopatias congênitas, sepse, afogamento, prematuridade). |
+| **Linkage & Trajetória** | Oito painéis do módulo de pareamento: qualidade do linkage, descritiva dos linkados, guia de CIDs, trajetória hospitalar (T₀→T₂), transição de CID (entrada → óbito), Δ entrada/óbito por região, causas secundárias e internações sem óbito (Etapa 5). |
+| **Metas ODS/IPEA** | Acompanhamento das taxas frente às metas de referência. |
+| **CID & Capítulos** | Detalhamento por CID, grandes capítulos, concentração em 2 dígitos e revisão de nomenclatura. |
 | **Mortalidade** | Perfil temporal e causal, mapas e desigualdades, fluxos e polos de ocorrência do óbito. |
 | **Internações** | Perfil temporal e causal, mapas e desigualdades, fluxos e polos de atendimento hospitalar. |
-| **Metodologia** | Nota metodológica, fontes e lacunas de dados. |
+| **Metodologia** | Nota metodológica, fontes, cobertura do linkage carregado e lacunas de dados. |
 | **Dados** | Tabelas executivas para auditoria e exportação (CSV/Excel). |
+
+### Arquivos que o app carrega
+
+O `app.R` procura os insumos **no próprio diretório de execução** (`readRDS("uf_sf_simplified.rds")`, `read_excel("Tabelas_Executivas_...")`), sem caminho absoluto e sem acesso à internet.
+
+**Obrigatórios:**
+
+```text
+Tabelas_Executivas_Mortalidade_v2.xlsx
+Tabelas_Executivas_Internacoes_0_6_Anos.xlsx
+uf_sf_simplified.rds
+```
+
+**Opcionais** — quando ausentes, os painéis correspondentes exibem um banner explicando o que falta, em vez de quebrar ou de mostrar dado substituto:
+
+```text
+populacao_uf_faixa.csv       # saída de 01_baixar_populacao.R (IBGE) — libera o denominador de 1 a 6 anos
+sih_sim_linkado.rds          # saída de 00_link_sih_sim_v3.R — libera trajetória e transição de CID
+linkage_qualidade.rds        # métricas de qualidade do linkage
+sih_nao_obito_agregado.rds   # Etapa 5 agregada
+```
 
 **Para executar localmente:**
 
 ```r
-# na raiz do repositório
+# na raiz do repositório, com os insumos ao lado do app.R
 install.packages(c("shiny","bslib","bsicons","readxl","dplyr","tidyr",
                    "plotly","DT","sf","ggplot2","scales","htmltools"))
 shiny::runApp("app.R")
 ```
 
-> O app carrega as tabelas executivas (`.xlsx`) e a malha geográfica (`uf_sf_simplified.rds`) do diretório do próprio app — execução totalmente offline.
+> O `app.R` faz pré-checagem de dependências e falha com a lista de pacotes ausentes, em vez de erro opaco no meio do carregamento — o que também protege o deploy no shinyapps.io.
+
+---
+
+## 🔗 Linkage SIM ↔ SIH (fluxo em 5 etapas)
+
+O script [`Scripts/00_link_sih_sim_v3.R`](Scripts/00_link_sih_sim_v3.R) (versão de lógica **v3.2**) pareia óbitos e internações sem download, lendo as bases já processadas localmente. A direção do pareamento parte do SIM, e não do SIH como na v2, porque o alvo epidemiológico é o óbito hospitalar e não a internação.
+
+| Etapa | O que faz |
+|---|---|
+| **1 · Alvo** | Identifica no SIM os óbitos hospitalares pelo `LOCOCOR` (1 = hospital, 2 = outros estabelecimentos de saúde). Como não há informação sobre a fonte pagadora da internação, todo óbito hospitalar é candidato a constar na AIH. |
+| **2 · Pareamento** | Linkage do alvo com as AIHs de desfecho óbito. Chaves: data de nascimento, sexo, data da alta/óbito, CNES (`CODESTAB` no SIM) e município de residência; raça/cor entra como verificação. Dois níveis: **exato** (todas as chaves batem, data idêntica) e **probabilístico** (bloco nascimento + sexo, escore com buffer de até ±3 dias na data e concordância parcial de CNES/município/raça, escore mínimo 3). |
+| **3 · Retroação** | Para o subgrupo linkado, busca internações anteriores com desfecho alta ou transferência em janela de 30 dias antes da internação-índice, com 45 e 60 dias como análise de sensibilidade. |
+| **4 · Base analítica** | Monta a base de trajetória e transição de CID consumida pelo app, agora com o histórico de internações prévias. |
+| **5 · Baixa mortalidade** | As AIHs que não são óbito nem internação anterior de óbito formam o grupo agregado por ano, UF, faixa etária, sexo e sistema do CID, sem microdado. |
+
+**Correções da v3.2 (08/08).** O desfecho do episódio deixa de vir da última AIH por data e passa a ter o óbito como prioridade sobre a ordem, corrigindo 48.602 AIHs de óbito que caíam no grupo "sem óbito" da Etapa 5 e ficavam fora do denominador do linkage, seja porque o motivo de cobrança estava fora das faixas mapeadas, seja porque duas AIHs empatavam na data. A AIH de óbito passa a ser a referência do episódio, fornecendo CNES e data de saída para o pareamento. Motivos de cobrança não mapeados deixam de virar `NA` silencioso e são contabilizados em `COB_NAO_MAPEADA`, gravado no arquivo de qualidade para inspeção, e a consistência dos totais é checada antes do script terminar.
+
+**Cache versionado.** O resultado de cada UF é gravado em `dados/parciais_v3`, de modo que o script pode ser interrompido e retomado, sendo que a versão da lógica fica gravada junto com o cache: se a versão não bater, os arquivos parciais são descartados sozinhos, o que evita que uma correção deixe de chegar ao resultado final por reaproveitamento de cache antigo.
+
+**Entradas e saídas:**
+
+```text
+ENTRADAS
+  SIH · Temporarios_UF_Ano/sih_{UF}_{ano}.rds        (270 lotes: 27 UF × 10 anos)
+  SIM · sim_brasil_0_a_6_anos_todas_vars_2015_2024.rds
+
+SAÍDAS (gravadas na pasta do dashboard)
+  sih_sim_linkado.rds          — base analítica
+  linkage_qualidade.rds        — funil, cobertura por ano e por UF, exato × probabilístico, sensibilidade
+  sih_nao_obito_agregado.rds   — Etapa 5 agregada
+  relatorio_linkage_v3.txt     — relatório em texto
+```
+
+```bash
+Rscript Scripts/00_link_sih_sim_v3.R   # sem internet; ~20–40 min para o Brasil inteiro
+```
+
+> ⚠️ **Ajuste os caminhos antes de rodar.** O bloco `CONFIG`, no início do script, aponta para os diretórios locais de quem gerou as bases (`dir_sih`, `arq_sim`, `dir_dash`). Nenhum microdado é distribuído neste repositório, então os três caminhos precisam ser reapontados para a máquina de quem for reproduzir.
 
 ---
 
 ## 🔬 Nota Metodológica
 
-Para garantir maior precisão epidemiológica, este estudo utiliza o número de **nascidos vivos do SINASC** como denominador para o cálculo das taxas de mortalidade e de internação.
+Para garantir maior precisão epidemiológica, este estudo utiliza o número de **nascidos vivos do SINASC** como denominador das taxas de mortalidade e de internação **até 1 ano de idade**. Para a faixa de **1 a 6 anos**, o denominador correto é a **população de crianças da faixa** (POPSVS/DATASUS-IBGE), somada ano a ano no período filtrado, e não os nascidos vivos — regra revista na reunião de 27/07 e aplicada em todos os painéis do app.
 
-As taxas são expressas por **1.000 nascidos vivos**, permitindo comparações padronizadas entre anos, Unidades Federativas e macrorregiões.
+As taxas são expressas por **1.000 nascidos vivos** (até 1 ano) e por **1.000 crianças da faixa** (1 a 6 anos), permitindo comparações padronizadas entre anos, Unidades Federativas e macrorregiões.
 
 **Fontes de dados oficiais:**
 
 * **SIM** — Sistema de Informações sobre Mortalidade;
 * **SIH/SUS** — Sistema de Informações Hospitalares do SUS;
 * **SINASC** — Sistema de Informações sobre Nascidos Vivos;
+* **POPSVS/DATASUS (IBGE)** — população residente por UF e faixa etária;
 * **Extração e processamento:** DataSUS, TabNet e rotinas em R.
 
-Para a leitura de **polos de referência**, os diagnósticos são segmentados em grupos de alta complexidade (oncologia, cardiopatias congênitas, malformações, doenças do sistema nervoso e metabólicas/genéticas). As **afecções perinatais** são analisadas em separado, pois parte do evento perinatal recebido nos polos reflete o **local de parto** (gestação de risco referenciada à maternidade da capital) e não o deslocamento da criança em busca de tratamento. Define-se assim o conceito de **referência terapêutica** (alta complexidade *sem* perinatal), que é o fluxo "limpo" para identificar centros de referência e vazios assistenciais.
+**Duas unidades de contagem.** O SIM conta óbitos e o SIH conta episódios de internação, com AIHs do mesmo paciente encadeadas, sendo que nenhuma das duas bases é subconjunto da outra. Por isso a aba de qualidade do linkage apresenta as duas trilhas lado a lado, com o ponto de encontro destacado, em vez de empilhar as contagens num funil descendente único, o que sugeriria um filtro que não existe.
+
+**Classificação de CID.** Todo código é mapeado de forma determinística para capítulo, sistema do organismo e grupo de patologia, com marcação explícita de códigos **genéricos, mal definidos ou administrativos** (capítulo XVIII inteiro, códigos administrativos do capítulo XXI e intenção indeterminada, seguindo o critério de *garbage code* da literatura GBD/RIPSA). A matriz de transição entrada → óbito abre os quatro casos de interesse: genérico → específico, específico → genérico, genérico → genérico (causa nunca esclarecida) e troca de sistema.
+
+**Polos de referência.** Os diagnósticos são segmentados em grupos de alta complexidade (oncologia, cardiopatias congênitas, malformações, doenças do sistema nervoso e metabólicas/genéticas). As **afecções perinatais** são analisadas em separado, pois parte do evento perinatal recebido nos polos reflete o **local de parto** (gestação de risco referenciada à maternidade da capital) e não o deslocamento da criança em busca de tratamento. Define-se assim o conceito de **referência terapêutica** (alta complexidade *sem* perinatal), que é o fluxo "limpo" para identificar centros de referência e vazios assistenciais.
 
 > ℹ️ **Nota técnica sobre mapas.** As malhas geográficas (UF e centroides municipais) são obtidas de fontes abertas oficiais (GeoJSON com códigos IBGE e CSV de coordenadas municipais), baixadas uma única vez e cacheadas localmente (`uf_sf_simplified.rds`). Essa abordagem substitui o pacote `geobr` para garantir reprodutibilidade e execução offline após o primeiro download.
 
@@ -80,21 +151,28 @@ Para a leitura de **polos de referência**, os diagnósticos são segmentados em
 
 ## 📁 Scripts do Projeto
 
-Os scripts utilizados para extração, tratamento, análise e geração das visualizações estão disponíveis na pasta `Scripts/`.
+Os scripts de extração, tratamento, análise, linkage e geração das visualizações estão na pasta `Scripts/`.
 
-### Scripts do SIM — Mortalidade
+### Pipeline — preparação das bases
 
 * [`Scripts/Script Insper_SIM.R`](Scripts/Script%20Insper_SIM.R)
-  Script de extração, organização e preparação das bases do SIM/SINASC.
-* [`Scripts/Script Insper_SIM_analises.R`](Scripts/Script%20Insper_SIM_analises.R)
-  Script de análises epidemiológicas, geração de tabelas executivas e visualizações do módulo de mortalidade.
-
-### Scripts do SIH — Internações
-
+  Extração, organização e preparação das bases do SIM/SINASC.
 * [`Scripts/Script Insper_SIH.R`](Scripts/Script%20Insper_SIH.R)
-  Script de extração, organização e preparação das bases do SIH/SINASC.
+  Extração, organização e preparação das bases do SIH/SINASC.
+
+### Pipeline — análises
+
+* [`Scripts/Script Insper_SIM_analises.R`](Scripts/Script%20Insper_SIM_analises.R)
+  Análises epidemiológicas, tabelas executivas e figuras do módulo de mortalidade.
 * [`Scripts/Script Insper_SIH_analises.R`](Scripts/Script%20Insper_SIH_analises.R)
-  Script de análises epidemiológicas, geração de tabelas executivas e visualizações do módulo de internações.
+  Análises epidemiológicas, tabelas executivas e figuras do módulo de internações.
+
+### Pipeline — insumos do dashboard
+
+* [`Scripts/00_link_sih_sim_v3.R`](Scripts/00_link_sih_sim_v3.R)
+  Linkage SIM ↔ SIH em 5 etapas (v3.2). Gera `sih_sim_linkado.rds`, `linkage_qualidade.rds`, `sih_nao_obito_agregado.rds` e `relatorio_linkage_v3.txt`.
+* [`Scripts/01_baixar_populacao.R`](Scripts/01_baixar_populacao.R)
+  Download e organização da população residente por UF e faixa etária (IBGE). Gera `populacao_uf_faixa.csv`, denominador da faixa de 1 a 6 anos.
 
 ---
 
@@ -393,16 +471,17 @@ sim-sih-mortalidade-internacoes-0-6-anos/
 │
 ├── app.R                          # Dashboard Shiny (Observatório de Saúde Infantil)
 │
-├── data/                          # Insumos carregados pelo app (execução offline)
-│   ├── Tabelas_Executivas_Mortalidade_v2.xlsx
-│   ├── Tabelas_Executivas_Internacoes_0_6_Anos.xlsx
-│   └── uf_sf_simplified.rds
+├── Tabelas_Executivas_Mortalidade_v2.xlsx        # insumos obrigatórios do app,
+├── Tabelas_Executivas_Internacoes_0_6_Anos.xlsx  #   lidos do diretório de execução
+├── uf_sf_simplified.rds                          #   (mesma pasta do app.R)
 │
 ├── Scripts/
-│   ├── Script Insper_SIH.R
-│   ├── Script Insper_SIH_analises.R
+│   ├── 00_link_sih_sim_v3.R       # Linkage SIM ↔ SIH em 5 etapas (v3.2)
+│   ├── 01_baixar_populacao.R      # População IBGE → populacao_uf_faixa.csv
 │   ├── Script Insper_SIM.R
-│   └── Script Insper_SIM_analises.R
+│   ├── Script Insper_SIM_analises.R
+│   ├── Script Insper_SIH.R
+│   └── Script Insper_SIH_analises.R
 │
 ├── outputs/
 │   │
@@ -460,24 +539,28 @@ sim-sih-mortalidade-internacoes-0-6-anos/
 └── README.md
 ```
 
-> **Nota:** o `app.R` procura as tabelas executivas e o `uf_sf_simplified.rds` no diretório de execução. Se você mantiver esses insumos em `data/`, ajuste os caminhos no início do `app.R` (ou copie os arquivos para a raiz antes de rodar).
+> **Nota.** Os arquivos `sih_sim_linkado.rds`, `linkage_qualidade.rds`, `sih_nao_obito_agregado.rds` e `populacao_uf_faixa.csv` são gerados localmente pelos scripts `00_` e `01_` e não são versionados, seja pelo volume, seja por conterem microdado individualizado no caso do linkage. Sem eles o app abre normalmente, com os painéis dependentes sinalizando o insumo ausente.
 
 ---
 
 # 💻 Reprodutibilidade
 
-Para reproduzir as análises, clone o repositório e execute os scripts disponíveis na pasta `Scripts/`.
+A ordem de execução importa: as bases do SIM e do SIH precisam existir antes do linkage, e o linkage precisa rodar antes de os painéis de trajetória ficarem disponíveis no dashboard.
 
 ```r
-# Scripts do SIM — Mortalidade
+# 1. Preparação das bases
 source("Scripts/Script Insper_SIM.R")
-source("Scripts/Script Insper_SIM_analises.R")
-
-# Scripts do SIH — Internações
 source("Scripts/Script Insper_SIH.R")
+
+# 2. Análises descritivas, tabelas executivas e figuras
+source("Scripts/Script Insper_SIM_analises.R")
 source("Scripts/Script Insper_SIH_analises.R")
 
-# Dashboard interativo
+# 3. Insumos do dashboard
+source("Scripts/01_baixar_populacao.R")     # denominador de 1 a 6 anos (IBGE)
+source("Scripts/00_link_sih_sim_v3.R")      # linkage SIM ↔ SIH (~20–40 min)
+
+# 4. Dashboard interativo
 shiny::runApp("app.R")
 ```
 
@@ -488,6 +571,8 @@ shiny::runApp("app.R")
 Os microdados brutos não são armazenados no repositório, em razão do volume dos arquivos e das boas práticas de organização, versionamento e reprodutibilidade.
 
 As rotinas em R permitem reconstruir as bases analíticas a partir das fontes oficiais do DataSUS, respeitando a estrutura dos sistemas nacionais de informação em saúde.
+
+O linkage SIM ↔ SIH é executado inteiramente em ambiente local, sobre bases já baixadas, sem qualquer transmissão de dado individualizado, e os produtos versionados neste repositório são apenas agregados.
 
 ---
 
