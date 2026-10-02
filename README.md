@@ -87,6 +87,19 @@ shiny::runApp("app.R")
 
 ---
 
+## 🧭 Universo SUS e linkage SIM × SIH × SINASC (02/10/2026)
+
+Script: [`Scripts/20_universo_sus_sinasc.R`](Scripts/20_universo_sus_sinasc.R) · documento: [`outputs/universo_sus/Perfil_obitos_SIM_sem_AIH_universo_SUS.pdf`](outputs/universo_sus/Perfil_obitos_SIM_sem_AIH_universo_SUS.pdf) · tabelas: [`Tabelas_universo_SUS.xlsx`](outputs/universo_sus/Tabelas_universo_SUS.xlsx) · bases: [`bases_finais/`](bases_finais/LEIAME_bases_finais.md)
+
+- **Universo SUS:** óbito em hospital (LOCOCOR 1) cujo CNES tem ao menos uma AIH de 0–6 anos no SIH 2015–2024. Saem UPA/PS/UBS e hospitais sem nenhuma AIH 0–6 (saúde suplementar). 314.060 óbitos (77,1% do SIM).
+- **Pareamento SIM × SIH:** 180.591 pareados (57,5%); 133.469 sem AIH (42,5%).
+- **Retroação:** todas as AIHs da criança até o óbito (internações prévias, reinternações, AIH aberta no hospital do óbito, AIH do nascimento).
+- **SIM × SINASC:** estabelecimento + características do nascimento e da mãe; 82,1% do universo pareado (91,7% dos <1 ano). Validação no dia 0: 93,9% nasceram no hospital do óbito.
+- **SINASC × SIH:** nascidos vivos 2009–2024 com internações possíveis vinculadas.
+- SINASC baixado do OpenDataSUS (S3) por [`Scripts/33_baixar_sinasc_opendatasus.R`](Scripts/33_baixar_sinasc_opendatasus.R).
+
+---
+
 ## 🔗 Linkage SIM ↔ SIH (fluxo em 5 etapas)
 
 O script [`Scripts/00_link_sih_sim_v3.R`](Scripts/00_link_sih_sim_v3.R) (versão de lógica **v3.2**) pareia óbitos e internações sem download, lendo as bases já processadas localmente. A direção do pareamento parte do SIM, e não do SIH como na v2, porque o alvo epidemiológico é o óbito hospitalar e não a internação.
