@@ -1,0 +1,137 @@
+== 20_universo_sus_sinasc.R · 02/10/2026 11:47 == 
+
+PARTE 1 · SIH 
+  AIHs 0-6 anos: 12.564.608 
+  episodios: 10.128.010 | com obito: 198.636 
+  CNES com ao menos 1 AIH 0-6 (2015-2024): 5.203
+== 20_universo_sus_sinasc.R · 02/10/2026 12:02 == 
+
+PARTE 2 · SIM x SIH 
+  obitos 0-6 SIM: 407.546 
+  pareados SIM x SIH (alvo LOCOCOR 1/2): 185.588 de 374.604 (49.5%) 
+  universo SUS (LOCOCOR 1 + CNES com AIH): 315.179 | pareados 181.149 (57.5%) 
+  retroacao feita: 232.368 obitos do universo com >=1 AIH da crianca 
+
+Fim: 12:04 
+== 20_universo_sus_sinasc.R · 02/10/2026 12:05 == 
+
+PARTE 2 · SIM x SIH 
+  obitos 0-6 SIM: 407.546 
+  pareados SIM x SIH (alvo LOCOCOR 1/2): 185.588 de 374.604 (49.5%) 
+  universo SUS (LOCOCOR 1 + CNES com AIH): 314.060 | pareados 180.591 (57.5%) 
+  retroacao feita: 231.449 obitos do universo com >=1 AIH da crianca 
+
+PARTE 3 · SINASC 
+  2009: nenhum arquivo 
+  2010: nenhum arquivo 
+  2011: nenhum arquivo 
+  2012: nenhum arquivo 
+  2013: nenhum arquivo 
+  2014: nenhum arquivo 
+  2015: nenhum arquivo 
+  2016: nenhum arquivo 
+  2017: 2.923.535 nascidos vivos 
+  2018: 2.944.932 nascidos vivos 
+  2019: 2.849.146 nascidos vivos 
+  2020: 2.730.145 nascidos vivos 
+  2021: 2.677.101 nascidos vivos 
+  2022: 2.561.922 nascidos vivos 
+  2023: 2.537.576 nascidos vivos 
+  2024: 2.389.325 nascidos vivos 
+
+Fim: 12:14 
+== 20_universo_sus_sinasc.R · 02/10/2026 12:16 == 
+
+PARTE 3 · SINASC 
+  2009: nenhum arquivo 
+  2010: nenhum arquivo 
+  2011: nenhum arquivo 
+  2012: 2.905.789 nascidos vivos 
+  2013: 2.904.027 nascidos vivos 
+== 20_universo_sus_sinasc.R · 02/10/2026 12:19 == 
+
+PARTE 3 · SINASC 
+  2009: 2.881.581 nascidos vivos 
+  2010: 2.861.868 nascidos vivos 
+  2011: 2.913.160 nascidos vivos 
+  2013: 2.904.027 nascidos vivos 
+  2014: 2.979.259 nascidos vivos 
+  2015: 3.017.668 nascidos vivos 
+  2016: 2.857.800 nascidos vivos 
+
+PARTE 4 · SIM x SINASC 
+== 20_universo_sus_sinasc.R · 02/10/2026 12:28 == 
+
+PARTE 4 · SIM x SINASC 
+  nasc 2009: obitos 1.025 | pareados A 0 B 0 C 232 
+  nasc 2010: obitos 1.757 | pareados A 0 B 0 C 392 
+  nasc 2011: obitos 2.624 | pareados A 0 B 0 C 593 
+  nasc 2012: obitos 3.762 | pareados A 0 B 0 C 853 
+  nasc 2013: obitos 5.602 | pareados A 0 B 0 C 1.299 
+  nasc 2014: obitos 11.044 | pareados A 2.953 B 2 C 1.806 
+== 20_universo_sus_sinasc.R · 02/10/2026 12:32 == 
+
+PARTE 4 · SIM x SINASC 
+  nasc 2009: obitos 1.025 | pareados A 0 B 0 C 232 
+  nasc 2010: obitos 1.757 | pareados A 0 B 0 C 392 
+  nasc 2011: obitos 2.624 | pareados A 0 B 0 C 593 
+  nasc 2012: obitos 3.762 | pareados A 0 B 0 C 853 
+  nasc 2013: obitos 5.602 | pareados A 0 B 0 C 1.299 
+  nasc 2014: obitos 11.044 | pareados A 2.954 B 2 C 1.806 
+  nasc 2015: obitos 44.698 | pareados A 32.833 B 257 C 2.338 
+  nasc 2016: obitos 42.403 | pareados A 31.300 B 225 C 2.261 
+  nasc 2017: obitos 43.102 | pareados A 31.951 B 239 C 2.300 
+  nasc 2018: obitos 42.405 | pareados A 31.547 B 277 C 2.257 
+  nasc 2019: obitos 40.156 | pareados A 30.548 B 267 C 1.971 
+  nasc 2020: obitos 36.380 | pareados A 27.626 B 221 C 1.832 
+  nasc 2021: obitos 36.383 | pareados A 28.309 B 254 C 1.594 
+  nasc 2022: obitos 34.883 | pareados A 28.278 B 206 C 1.331 
+  nasc 2023: obitos 32.888 | pareados A 28.244 B 216 C 908 
+  nasc 2024: obitos 26.169 | pareados A 23.796 B 199 C 363 
+  total SIM x SINASC: 322.079 obitos pareados 
+
+Fim: 12:40 
+== 20_universo_sus_sinasc.R · 02/10/2026 12:42 == 
+
+PARTE 5 · SINASC x SIH 
+== 20_universo_sus_sinasc.R · 02/10/2026 12:44 == 
+
+PARTE 5 · SINASC x SIH 
+  nasc 2009: NV 2.881.581 | AIHs da coorte 117.380 | AIHs vinculadas 28.143 (24.0%) | NV com AIH 22.698 
+  nasc 2010: NV 2.861.868 | AIHs da coorte 202.019 | AIHs vinculadas 48.521 (24.0%) | NV com AIH 37.548 
+  nasc 2011: NV 2.913.160 | AIHs da coorte 307.814 | AIHs vinculadas 73.328 (23.8%) | NV com AIH 53.756 
+  nasc 2012: NV 2.905.789 | AIHs da coorte 427.325 | AIHs vinculadas 101.775 (23.8%) | NV com AIH 71.351 
+  nasc 2013: NV 2.904.027 | AIHs da coorte 580.218 | AIHs vinculadas 139.243 (24.0%) | NV com AIH 92.125 
+  nasc 2014: NV 2.979.259 | AIHs da coorte 821.774 | AIHs vinculadas 195.565 (23.8%) | NV com AIH 121.924 
+== 20_universo_sus_sinasc.R · 02/10/2026 12:52 == 
+
+PARTE 5 · SINASC x SIH 
+  nasc 2009: NV 2.881.581 | AIHs da coorte 117.380 | AIHs vinculadas 28.143 (24.0%) | NV com AIH 22.698 
+  nasc 2010: NV 2.861.868 | AIHs da coorte 202.019 | AIHs vinculadas 48.521 (24.0%) | NV com AIH 37.548 
+  nasc 2011: NV 2.913.160 | AIHs da coorte 307.814 | AIHs vinculadas 73.328 (23.8%) | NV com AIH 53.756 
+  nasc 2012: NV 2.905.789 | AIHs da coorte 427.325 | AIHs vinculadas 101.775 (23.8%) | NV com AIH 71.351 
+  nasc 2013: NV 2.904.027 | AIHs da coorte 580.218 | AIHs vinculadas 139.243 (24.0%) | NV com AIH 92.125 
+  nasc 2014: NV 2.979.259 | AIHs da coorte 821.774 | AIHs vinculadas 195.565 (23.8%) | NV com AIH 121.924 
+  nasc 2015: NV 3.017.668 | AIHs da coorte 1.205.846 | AIHs vinculadas 318.420 (26.4%) | NV com AIH 185.869 
+  nasc 2016: NV 2.857.800 | AIHs da coorte 1.181.191 | AIHs vinculadas 322.716 (27.3%) | NV com AIH 187.047 
+  nasc 2017: NV 2.923.535 | AIHs da coorte 1.242.965 | AIHs vinculadas 337.634 (27.2%) | NV com AIH 196.100 
+  nasc 2018: NV 2.944.932 | AIHs da coorte 1.229.739 | AIHs vinculadas 344.010 (28.0%) | NV com AIH 195.461 
+  nasc 2019: NV 2.849.146 | AIHs da coorte 1.088.573 | AIHs vinculadas 316.775 (29.1%) | NV com AIH 182.843 
+  nasc 2020: NV 2.730.145 | AIHs da coorte 959.699 | AIHs vinculadas 296.304 (30.9%) | NV com AIH 170.203 
+  nasc 2021: NV 2.677.101 | AIHs da coorte 955.499 | AIHs vinculadas 303.049 (31.7%) | NV com AIH 174.939 
+  nasc 2022: NV 2.561.922 | AIHs da coorte 885.705 | AIHs vinculadas 288.829 (32.6%) | NV com AIH 170.405 
+  nasc 2023: NV 2.537.576 | AIHs da coorte 787.780 | AIHs vinculadas 272.025 (34.5%) | NV com AIH 163.271 
+  nasc 2024: NV 2.389.325 | AIHs da coorte 530.621 | AIHs vinculadas 208.182 (39.2%) | NV com AIH 130.448 
+
+PARTE 6 · Tabelas e bases finais 
+  universo SUS: 314.060 | sem AIH: 133.469 (42.5%) 
+  arquivos em /home/claude/work/out 
+
+Fim: 13:05 
+== 20_universo_sus_sinasc.R · 02/10/2026 13:06 == 
+
+PARTE 6 · Tabelas e bases finais 
+  universo SUS: 314.060 | sem AIH: 133.469 (42.5%) 
+  arquivos em /home/claude/work/out 
+
+Fim: 13:09 
