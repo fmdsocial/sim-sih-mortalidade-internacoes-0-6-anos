@@ -22,7 +22,7 @@
 #   Dash/dados/cnes_bruto/ST_UF_2024.rds e ST_UF_2015.rds, _cadger.rds; Dash/estabelecimentos_dash.csv
 # SAÍDA
 #   bases_finais/banco1_coorte_nascidos_vivos/coorte_nascidos_vivos_AAAA_REGIAO.csv.gz
-#   (ano de nascimento × região de residência; Sudeste em SP e MG_ES_RJ)
+#   (ano de nascimento × região de residência; Sudeste e Nordeste em 2 arquivos cada)
 # =============================================================================
 suppressPackageStartupMessages(library(data.table))
 raiz <- c(Sys.getenv("INSPER_RAIZ"), "G:/My Drive/INSPER/Trabalho")
@@ -181,7 +181,8 @@ for (ano in 2015:2024) {
            obito_neonatal_precoce = as.integer(!is.na(obito_idade_dias) & obito_idade_dias <= 6),
            fim_seguimento = pmin(as.IDate("2024-12-31"), dt_nasc + 6L * 365L + 1L))]
   h[, arq := fifelse(is.na(regiao_res), "UF_ignorada", regiao_res)]
-  h[uf_res == "SP", arq := "Sudeste_SP"][arq == "Sudeste", arq := "Sudeste_MG_ES_RJ"]
+  h[uf_res == "SP", arq := "Sudeste_SP"][arq == "Sudeste", arq := "Sudeste_MG_ES_RJ"]   # limite de 25 MB por arquivo
+  h[uf_res %chin% c("BA", "PE", "AL", "SE"), arq := "Nordeste_BA_PE_AL_SE"][arq == "Nordeste", arq := "Nordeste_MA_PI_CE_RN_PB"]
   bb <- b1[substr(id_nasc, 3, 6) == as.character(ano)]
   pri <- c("id_nasc", "contador_sinasc", "ano_nasc", "dt_nasc", "sexo", "raca_nv", "uf_res", "regiao_res", "munic_res",
            "munic_nasc", "cnes_nasc", "locnasc", "obito_0_6anos", "obito_neonatal", "obito_neonatal_precoce",
