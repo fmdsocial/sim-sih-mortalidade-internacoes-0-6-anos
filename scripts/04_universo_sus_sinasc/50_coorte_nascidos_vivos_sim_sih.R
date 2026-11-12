@@ -125,6 +125,8 @@ EN <- EST[, .(cnes_nasc = codestab, est_nasc_nome = nome, est_nasc_tipo_unidade_
               est_nasc_leitos_total = leitos_total, est_nasc_leitos_sus = leitos_sus,
               est_nasc_leitos_uti_neo = leitos_uti_neo, est_nasc_leitos_uci_neo = leitos_uci_neo)]
 
+rm(st, ed, cg); gc()
+
 # ---- óbitos 0-6 anos pareados ao SINASC (todas as idades) --------------------
 fo <- list.files(dir_ob, "^obitos_0_6_linkados_\\d{4}\\.csv\\.gz$", full.names = TRUE)
 ob <- rbindlist(lapply(fo, fread, encoding = "UTF-8",
@@ -136,7 +138,7 @@ setnames(ob, c("dt_obito", "idade_dias", "faixa", "causabas4"), c("obito_dt", "o
 
 # ---- Banco 1 (óbitos neonatais com SIM completo e AIH) -----------------------
 b1 <- rbindlist(lapply(list.files(dir_b1, "^banco1_obitos_neonatais_\\d{4}\\.csv\\.gz$", full.names = TRUE),
-                       fread, colClasses = "character"), fill = TRUE)
+                       fread, colClasses = list(character = c("id_nasc", "contador", "sim_contador"))), fill = TRUE)
 b1 <- b1[!is.na(id_nasc) & id_nasc != ""]
 stopifnot(!anyDuplicated(b1$id_nasc))
 manter <- setdiff(names(b1), c(grep("^(nv_|est_nasc_)", names(b1), value = TRUE),
@@ -178,18 +180,25 @@ for (ano in 2015:2024) {
            obito_neonatal = as.integer(!is.na(obito_idade_dias) & obito_idade_dias <= 27),
            obito_neonatal_precoce = as.integer(!is.na(obito_idade_dias) & obito_idade_dias <= 6),
            fim_seguimento = pmin(as.IDate("2024-12-31"), dt_nasc + 6L * 365L + 1L))]
-  h <- merge(h, b1[substr(id_nasc, 3, 6) == as.character(ano)], by = "id_nasc", all.x = TRUE, sort = FALSE)
-  stopifnot(h[obito_neonatal == 1L, all(!is.na(neo_contador))], h[obito_neonatal == 0L, all(is.na(neo_contador))])
+  h[, arq := fcase(uf_res == "SP", "Sudeste_SP", regiao_res == "Sudeste", "Sudeste_MG_ES_RJ",
+                   is.na(regiao_res), "UF_ignorada", default = regiao_res)]
+  bb <- b1[substr(id_nasc, 3, 6) == as.character(ano)]
   pri <- c("id_nasc", "contador_sinasc", "ano_nasc", "dt_nasc", "sexo", "raca_nv", "uf_res", "regiao_res", "munic_res",
            "munic_nasc", "cnes_nasc", "locnasc", "obito_0_6anos", "obito_neonatal", "obito_neonatal_precoce",
            "fim_seguimento", "id_sim", "obito_dt", "obito_idade_dias", "obito_faixa", "obito_causabas")
-  setcolorder(h, c(pri, setdiff(names(h), pri))); setorder(h, dt_nasc, id_nasc)
-  h[, arq := fcase(uf_res == "SP", "Sudeste_SP", regiao_res == "Sudeste", "Sudeste_MG_ES_RJ",
-                   is.na(regiao_res), "UF_ignorada", default = regiao_res)]
-  for (r in unique(h$arq)) fwrite(h[arq == r, !"arq"], file.path(od, sprintf("coorte_nascidos_vivos_%d_%s.csv.gz", ano, r)))
-  resumo[[as.character(ano)]] <- h[, .(ano_nasc = ano, nascidos_vivos = .N, obitos_0_6anos = sum(obito_0_6anos),
-    obitos_neonatais = sum(obito_neonatal), obitos_neonatais_precoces = sum(obito_neonatal_precoce),
-    neonatais_com_aih_obito = sum(neo_tem_aih_obito %in% "TRUE"), uf_ignorada = sum(arq == "UF_ignorada"))]
+  rs <- list()
+  for (r in unique(h$arq)) {                  # junta o Banco 1 por arquivo (memória)
+    x <- merge(h[arq == r, !"arq"], bb, by = "id_nasc", all.x = TRUE, sort = FALSE)
+    stopifnot(x[obito_neonatal == 1L, all(!is.na(neo_contador))], x[obito_neonatal == 0L, all(is.na(neo_contador))])
+    setcolorder(x, c(pri, setdiff(names(x), pri))); setorder(x, dt_nasc, id_nasc)
+    fwrite(x, file.path(od, sprintf("coorte_nascidos_vivos_%d_%s.csv.gz", ano, r)))
+    rs[[r]] <- x[, .(nascidos_vivos = .N, obitos_0_6anos = sum(obito_0_6anos), obitos_neonatais = sum(obito_neonatal),
+                     obitos_neonatais_precoces = sum(obito_neonatal_precoce),
+                     neonatais_com_aih_obito = sum(neo_tem_aih_obito %in% c(TRUE, "TRUE")),
+                     uf_ignorada = if (r == "UF_ignorada") .N else 0L)]
+    rm(x); gc()
+  }
+  resumo[[as.character(ano)]] <- cbind(ano_nasc = ano, rbindlist(rs)[, lapply(.SD, sum)])
   message(ano, ": ", nrow(h), " nascidos vivos"); rm(h); gc()
 }
 resumo <- rbindlist(resumo); fwrite(resumo, file.path(od, "resumo_coorte_nascidos_vivos.csv")); print(resumo)
