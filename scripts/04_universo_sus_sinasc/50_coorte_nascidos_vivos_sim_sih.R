@@ -180,8 +180,8 @@ for (ano in 2015:2024) {
            obito_neonatal = as.integer(!is.na(obito_idade_dias) & obito_idade_dias <= 27),
            obito_neonatal_precoce = as.integer(!is.na(obito_idade_dias) & obito_idade_dias <= 6),
            fim_seguimento = pmin(as.IDate("2024-12-31"), dt_nasc + 6L * 365L + 1L))]
-  h[, arq := fcase(uf_res == "SP", "Sudeste_SP", regiao_res == "Sudeste", "Sudeste_MG_ES_RJ",
-                   is.na(regiao_res), "UF_ignorada", default = regiao_res)]
+  h[, arq := fifelse(is.na(regiao_res), "UF_ignorada", regiao_res)]
+  h[uf_res == "SP", arq := "Sudeste_SP"][arq == "Sudeste", arq := "Sudeste_MG_ES_RJ"]
   bb <- b1[substr(id_nasc, 3, 6) == as.character(ano)]
   pri <- c("id_nasc", "contador_sinasc", "ano_nasc", "dt_nasc", "sexo", "raca_nv", "uf_res", "regiao_res", "munic_res",
            "munic_nasc", "cnes_nasc", "locnasc", "obito_0_6anos", "obito_neonatal", "obito_neonatal_precoce",
